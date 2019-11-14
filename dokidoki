@@ -3,7 +3,8 @@
 # Original author CrazySqueak
 import sys, os, subprocess
 
-os.chdir(os.path.dirname(sys.argv[0]))
+#odir = os.getcwd()
+#os.chdir(os.path.dirname(sys.argv[0]))
 
 if len(sys.argv) == 1:
     cmd = ""
