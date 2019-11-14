@@ -1,0 +1,103 @@
+#!/usr/bin/env python3
+
+# Original author CrazySqueak
+import sys, os, subprocess
+
+os.chdir(os.path.dirname(sys.argv[0]))
+
+if len(sys.argv) == 1:
+    cmd = ""
+    args = []
+elif len(sys.argv) == 2:
+    cmd = sys.argv[1]
+    args = []
+else:
+    cmd = sys.argv[1]
+    args = sys.argv[2:]
+
+print("DokiDoki Launcher")
+print("NOTE: Please be warned that this launcher is in beta!")
+print("Use 'dokidoki help' for a list of commands.")
+
+if cmd == "" or cmd == "start":
+    print("Attempting to launch DDLC.")
+    if len(args) < 1:
+        print("No argument, assuming folder 'ddlc'")
+        folder = 'ddlc'
+    else:
+        folder = args[0]
+    launchpath = '~/{}'.format(folder)
+    launchpath = os.path.expanduser(launchpath)
+    print("Launching at path: {}".format(launchpath))
+    dokidoki = subprocess.Popen(['/usr/local/dokidoki/rpy/renpy.sh',launchpath])
+    dokidoki.wait()  # Wait for DDLC to exit.
+elif cmd == "setup":
+    print("Preparing to setup DDLC.")
+    if len(args) < 1:
+        print("No argument, assuming folder 'ddlc'")
+        folder = 'ddlc'
+    else:
+        folder = args[0]
+    setuppath = '~/{}'.format(folder)
+    setuppath = os.path.expanduser(setuppath)
+    print("Selected path: {}".format(setuppath))
+    if os.path.exists(setuppath):
+        print("The path you specified already exists. Setting up DDLC on that path will erase everything already there.")
+        yn = input("Continue?[y/n] ").lower()[0]
+        if yn != 'y':
+            print("Aborting.")
+            sys.exit(1)
+    print("Checking DDLC...")
+    if not os.path.exists("/usr/local/dokidoki/DDLC.zip"):
+        print("DOKI DOKI HAS NOT BEEN REGISTERED WITH THE PROGRAM!")
+        print("Because Dan Salvato has explicity forbidden redistributing copies of DDLC,")
+        print("and because itch.io doesn't support direct download links that can be automated,")
+        print("the user of dokidoki is required to download DDLC and notify this program")
+        print("of its existence.")
+        print()
+        print("Please download the WINDOWS version of DDLC and LEAVE IT ZIPPED.")
+        print("Then, run 'sudo dokidoki register path', replacing path with the path to the downloaded file,")
+        print("and the program will copy it, allowing you to set up DDLC anywhere on this device.")
+        sys.exit(2)
+    print("Clearing existing files...")
+    rm_proc = subprocess.Popen(["rm","-rf",setuppath])
+    rm_proc.wait()
+    rcode = rm_proc.returncode
+    if rcode != 0:
+        print("Error while clearing files.")
+        yn = input("Continue anyway?[y/n] ").lower()[0]
+        if yn != 'y':
+            print("Aborting.")
+            sys.exit(-1)
+    print("Extracting DDLC...")
+    unzip_proc = subprocess.Popen(["unzip","-d",setuppath,"/usr/local/dokidoki/DDLC.zip"])
+    unzip_proc.wait()
+    rcode = unzip_proc.returncode
+    if rcode != 0:
+        print("Error while extracting.")
+        sys.exit(-1)
+    print("INSTALL COMPLETE!")
+elif cmd == "register":
+    print("Preparing to register DDLC with the program...")
+    if len(args) < 1:
+        print("Please specify the path to the zipped copy.")
+    else:
+        file_path = args[0]
+    print("Attempting to copy the file...")
+    cp_proc = subprocess.Popen(["cp",file_path,"/usr/local/dokidoki/DDLC.zip"])
+    cp_proc.wait()
+    rcode = cp_proc.returncode
+    if rcode != 0:
+        print("Error while copying.")
+        print("Did you remember to use 'sudo', as 'ddlc register' copies to a restricted location?")
+        sys.exit(-1)
+    print("Success.")
+elif cmd == "help":
+    print("dokidoki [command]")
+    print("If command is omitted, will start DDLC in the default directory '~/ddlc'")
+    print("Commands:")
+    print("dokidoki start [name] - Starts the DDLC install with the name 'name'. Installs are user-specific, and are also case-sensitive. If name is omitted, it defaults to 'ddlc'.")
+    print("dokidoki setup [name] - Installs DDLC with the name 'name'. If omitted, it asssumes 'ddlc'.")
+    print("dokidoki register [path] - Copies the DDLC zip file to the program's restricted area to allow easy setup.")
+    print()
+    print("Note that this program does not support multiple save files. The multi-install feature is designed for usage of mods.")
