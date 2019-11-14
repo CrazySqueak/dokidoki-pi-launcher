@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 
 # Original author CrazySqueak
-import sys, os, subprocess
+import sys, os, subprocess, glob
 
 #odir = os.getcwd()
 #os.chdir(os.path.dirname(sys.argv[0]))
@@ -30,7 +30,7 @@ if cmd == "" or cmd == "start":
     launchpath = '~/{}'.format(folder)
     launchpath = os.path.expanduser(launchpath)
     print("Launching at path: {}".format(launchpath))
-    dokidoki = subprocess.Popen(['/usr/local/dokidoki/rpy/renpy.sh',launchpath])
+    dokidoki = subprocess.Popen(['/usr/local/dokidoki/rpy/renpy.sh',os.path.join(launchpath,"ddlc")])
     dokidoki.wait()  # Wait for DDLC to exit.
 elif cmd == "setup":
     print("Preparing to setup DDLC.")
@@ -77,6 +77,9 @@ elif cmd == "setup":
     if rcode != 0:
         print("Error while extracting.")
         sys.exit(-1)
+    print("Fixing path...")
+    sub = glob.glob("{}/*".format(setuppath))[0]
+    os.rename(sub,os.path.join(setuppath,"ddlc"))
     print("INSTALL COMPLETE!")
 elif cmd == "register":
     print("Preparing to register DDLC with the program...")
