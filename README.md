@@ -30,7 +30,7 @@ For instance, for the easiest possible way (which not may people stop and think 
  This is not tested (and not supported) by: Pi 1 (any model), Pi Zero (including W and WH).  
  If you have any of the models of Pi in the "This still needs to be tested on" section, please feel free to test that the program works (including sound), and submit an issue named "[TEST RESULTS] <model of pi>", with the results of testing in the description.  
  Please do not post results for models not in the "This still needs to be tested on".  
- *If you have negative test results (DDLC won't run, or something won't work), please instead post a regular issue.*  
+ **If you have negative test results (DDLC won't run, or something won't work), please instead post a regular issue.**  
 
 ## Planned features
 * Desktop/menu icons
