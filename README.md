@@ -15,6 +15,10 @@ This is a utility to run Doki Doki Literature Club! on the Raspberry Pi. DDLC ha
 6. For best experience, use `raspi-config` to set the GL driver (in advanced options) to the "Fake KMS" option, and increase the GPU memory split to 256.
 7. Now, you can play DDLC by using the command `dokidoki` or `dokidoki start`.
 
+## But can't you play DDLC on a Raspberry Pi without this program?
+Yes you can, however the instructions are usually overcomplicated, don't work, and usually require the average user to follow various complicated steps.
+For instance, for the easiest possible way (which not may people stop and think about from what I've seen), the user needs to download several files from the Ren'Py SDK, and then move the files correctly, before having to run a long-winded command every time they want to play DDLC. This program is designed to group all those steps into a single script, and shorten the long-winded command.
+
 ## Planned features
 * Desktop/menu icons
 * Ability to update using `dokidoki update`
