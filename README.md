@@ -22,13 +22,15 @@ For instance, for the easiest possible way (which not may people stop and think 
 ## FAQ
 * Why does the game lag so much?  
  Because it is designed for a full-blown PC, and the Raspberry Pi comes no-where near to it in computing power. Having the "Experimental Graphics Driver" in `raspi-config` set to the "Fake KMS" option can help.
-* I ran in to an error, what should I do?
+* I ran in to an error, what should I do?  
  Search the Issues section of this GitHub repository for the issue you're having, and if there isn't an issue posted about it, please post one.
-* What versions of the Raspberry Pi does this support?
- Currently this has been tested on: Pi 2B
- This still needs to be tested on: Pi 3B, Pi 3B+, Pi 4 1GB, Pi 4 2GB, Pi 4 4GB
- This is not tested (and not supported) by: Pi 1 (any model), Pi Zero (including W and WH).
- If you have any of the models of Pi in the "This still needs to be tested on" section, please feel free to test that the program works (including sound), and submit an issue named "[TEST RESULTS] <model of pi>", with the results of testing in the description. Please do not post results for models not in the "This still needs to be tested on". If you have negative results (DDLC won't run), please instead post a regular issue.
+* What versions of the Raspberry Pi does this support?  
+ Currently this has been tested on: Pi 2B  
+ This still needs to be tested on: Pi 3B, Pi 3B+, Pi 4 1GB, Pi 4 2GB, Pi 4 4GB  
+ This is not tested (and not supported) by: Pi 1 (any model), Pi Zero (including W and WH).  
+ If you have any of the models of Pi in the "This still needs to be tested on" section, please feel free to test that the program works (including sound), and submit an issue named "[TEST RESULTS] <model of pi>", with the results of testing in the description.  
+ Please do not post results for models not in the "This still needs to be tested on".  
+ *If you have negative test results (DDLC won't run, or something won't work), please instead post a regular issue.*  
 
 ## Planned features
 * Desktop/menu icons
