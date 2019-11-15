@@ -1,7 +1,5 @@
 #!/bin/bash
 
-# Configure FAKE KMS GL DRIVER
-
 # Prepare install folder
 echo "Preparing install folder..."
 mkdir /usr/local/dokidoki
