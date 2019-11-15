@@ -19,6 +19,17 @@ This is a utility to run Doki Doki Literature Club! on the Raspberry Pi. DDLC ha
 Yes you can, however the instructions are usually overcomplicated, don't work, and usually require the average user to follow various complicated steps.
 For instance, for the easiest possible way (which not may people stop and think about from what I've seen), the user needs to download several files from the Ren'Py SDK, and then move the files correctly, before having to run a long-winded command every time they want to play DDLC. This program is designed to group all those steps into a single script, and shorten the long-winded command.
 
+## FAQ
+* Why does the game lag so much?  
+ Because it is designed for a full-blown PC, and the Raspberry Pi comes no-where near to it in computing power. Having the "Experimental Graphics Driver" in `raspi-config` set to the "Fake KMS" option can help.
+* I ran in to an error, what should I do?
+ Search the Issues section of this GitHub repository for the issue you're having, and if there isn't an issue posted about it, please post one.
+* What versions of the Raspberry Pi does this support?
+ Currently this has been tested on: Pi 2B
+ This still needs to be tested on: Pi 3B, Pi 3B+, Pi 4 1GB, Pi 4 2GB, Pi 4 4GB
+ This is not tested (and not supported) by: Pi 1 (any model), Pi Zero (including W and WH).
+ If you have any of the models of Pi in the "This still needs to be tested on" section, please feel free to test that the program works (including sound), and submit an issue named "[TEST RESULTS] <model of pi>", with the results of testing in the description. Please do not post results for models not in the "This still needs to be tested on". If you have negative results (DDLC won't run), please instead post a regular issue.
+
 ## Planned features
 * Desktop/menu icons
 * Ability to update using `dokidoki update`
