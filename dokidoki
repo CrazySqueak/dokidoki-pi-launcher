@@ -96,6 +96,24 @@ elif cmd == "register":
         print("Did you remember to use 'sudo', as 'ddlc register' copies to a restricted location?")
         sys.exit(-1)
     print("Success.")
+elif cmd == "update":
+    print("Preparing...")
+    os.chdir(os.path.dirname(sys.argv[0]))
+    print("Checking for updates...")
+    p = subprocess.Popen(["git","fetch"])
+    p.wait()
+    rcode = p.returncode
+    if rcode != 0:
+        print("Error while checking for updates.")
+        print("Please make sure you have an active internet connection with access to GitHub, and try again.")
+        sys.exit(-1)
+    p = subprocess.Popen(["git","status"],stdout=subprocess.PIPE)  # Check whether the repo is up-to-date.
+    p.wait()
+    rcode = p.returncode
+    if rcode != 0:
+        print("Unknown error while checking for updates.")
+        sys.exit(-1)
+    print(p.stdout.read())
 elif cmd == "help":
     print("dokidoki [command]")
     print("If command is omitted, will start DDLC in the default directory '~/ddlc'")
