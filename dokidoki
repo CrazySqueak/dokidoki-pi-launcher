@@ -113,7 +113,42 @@ elif cmd == "update":
     if rcode != 0:
         print("Unknown error while checking for updates.")
         sys.exit(-1)
-    print(p.stdout.read())
+    if True: # Testing update mechanism. "behind" in p.stdout.read().decode("utf-8"):
+        print("Updates detected.")
+        print("Backing up files... (1/2) dokidoki")
+        cp_p = subprocess.Popen(["cp","-R","/usr/local/dokidoki/dokidoki","/usr/local/dokidoki/dokidoki.bak"])
+        cp_p.wait()
+        if cp_p.returncode != 0:
+            print("Error while backing up.")
+            print("Rolling back...")
+            subprocess.call(["rm","-rf","/usr/local/dokidoki/*.bak"])
+            sys.exit(-1)
+        print("Backing up files... (2/2) renpy")
+        cp_p = subprocess.Popen(["cp","-R","/usr/local/dokidoki/renpy","/usr/local/dokidoki/renpy.bak"])
+        cp_p.wait()
+        if cp_p.returncode != 0:
+            print("Error while backing up.")
+            print("Rolling back...")
+            subprocess.call(["rm","-rf","/usr/local/dokidoki/*.bak"])
+        print("Modifying symlinks...")
+        r = subprocess.call(["ln","-sfn","/usr/local/dokidoki/dokidoki.bak","/usr/local/dokidoki/dd"])
+        if r != 0:
+            print("Error replacing symlink.")
+            print("Rolling back...")
+            subprocess.call(["ln","-sfn","/usr/local/dokidoki/dokidoki","/usr/local/dokidoki/dd"])
+            subprocess.call(["rm","-rf","/usr/local/dokidoki/*.bak"])
+        r = subprocess.call(["ln","-sfn","/usr/local/dokidoki/renpy.bak","/usr/local/dokidoki/rpy"])
+        if r != 0:
+            print("Error replacing symlink.")
+            print("Rolling back...")
+            subprocess.call(["ln","-sfn","/usr/local/dokidoki/dokidoki","/usr/local/dokidoki/dd"])
+            subprocess.call(["ln","-sfn","/usr/local/dokidoki/renpy","/usr/local/dokidoki/rpy"])
+            subprocess.call(["rm","-rf","/usr/local/dokidoki/*.bak"])
+        print("Downloading new update...")
+        r = subprocess.call(["git","pull","origin","master"])
+        if r != 0:
+            print("Error downloading update.")
+            print("Rolling back...")
 elif cmd == "help":
     print("dokidoki [command]")
     print("If command is omitted, will start DDLC in the default directory '~/ddlc'")
@@ -121,5 +156,6 @@ elif cmd == "help":
     print("dokidoki start [name] - Starts the DDLC install with the name 'name'. Installs are user-specific, and are also case-sensitive. If name is omitted, it defaults to 'ddlc'.")
     print("dokidoki setup [name] - Installs DDLC with the name 'name'. If omitted, it asssumes 'ddlc'.")
     print("dokidoki register [path] - Copies the DDLC zip file to the program's restricted area to allow easy setup.")
+    print("dokidoki update - Checks for updates and installs them.")
     print()
     print("Note that this program does not support multiple save files. The multi-install feature is designed for usage of mods.")
