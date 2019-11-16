@@ -9,7 +9,7 @@ This is a utility to run Doki Doki Literature Club! on the Raspberry Pi. DDLC ha
 ## How to use:
 1. Download the latest installer file.
 2. Run the installer using: `sudo /path/to/downloaded/installer`
-3. Once it has been run, download the windows version of DDLC from [https://ddlc.moe](ddlc.moe). You do not need to pay, as it is pay what you want.
+3. Once it has been run, download the windows version of DDLC from [ddlc.moe](https://ddlc.moe). You do not need to pay, as it is pay what you want.
 4. Register it with the launcher using the command `sudo dokidoki register /path/to/zipped/copy/of/ddlc`.
 5. "Install" DDLC by using the command `dokidoki setup`.
 6. For best experience, use `raspi-config` to set the GL driver (in advanced options) to the "Fake KMS" option, and increase the GPU memory split to 256.
