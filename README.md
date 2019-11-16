@@ -28,6 +28,7 @@ For instance, for the easiest possible way (which not may people stop and think 
  Currently this has been tested on: Pi 2B  
  This still needs to be tested on: Pi 3B, Pi 3B+, Pi 4 1GB, Pi 4 2GB, Pi 4 4GB  
  This is not tested (and not supported) by: Pi 1 (any model), Pi Zero (including W and WH).  
+ If I'm missing any models of Pi, please let me know (or add it to one of the lists in a pull request.
  If you have any of the models of Pi in the "This still needs to be tested on" section, please feel free to test that the program works (including sound), and submit an issue named "[TEST RESULTS] <model of pi>", with the results of testing in the description.  
  Please do not post results for models not in the "This still needs to be tested on".  
  **If you have negative test results (DDLC won't run, or something won't work), please instead post a regular issue.**  
