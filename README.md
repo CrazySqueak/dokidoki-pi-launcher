@@ -2,6 +2,10 @@
 
 DISCLAIMER: This utility is fan-made, and not affiliated with Team Salvato. Doki Doki Literature Club! and all related characters and assets belong to Team Salvato. Team Salvato did not intend for DDLC to be run on this platform, so please don't report errors to them.
 
+Note: This is only compatible with the original version of DDLC, not DDLC+. There is no support planned for DDLC+ as it uses a completely different engine (not to mention the HD graphics would likely lag older models of Raspberry Pi).
+
+**IMPORTANT NOTICE**: This repository is currently inactive and the project no longer maintained. The launcher program provided by this project is provided as-is and I make no guarantees that it will work (although I can assure you it worked when I last tested it).  
+
 This is a utility to run Doki Doki Literature Club! on the Raspberry Pi. DDLC has not been fully tested on this platform.
 
 **THIS IS CURRENTLY IN BETA. USE AT YOUR OWN RISK.**
@@ -25,13 +29,15 @@ For instance, for the easiest possible way (which not may people stop and think 
 * I ran in to an error, what should I do?  
  Search the Issues section of this GitHub repository for the issue you're having, and if there isn't an issue posted about it, please post one.
 * What versions of the Raspberry Pi does this support?  
- Currently this has been tested on: Pi 2B  
- This still needs to be tested on: Pi 3B, Pi 3B+, Pi 4 1GB, Pi 4 2GB, Pi 4 4GB  
+ Currently this has been tested on: Pi 2B, Pi 4  
+ This still needs to be tested on: Pi 3B, Pi 3B+
  This is not tested (and not supported) by: Pi 1 (any model), Pi Zero (including W and WH).  
  If I'm missing any models of Pi, please let me know (or add it to one of the lists in a pull request.
  If you have any of the models of Pi in the "This still needs to be tested on" section, please feel free to test that the program works (including sound), and submit an issue named "[TEST RESULTS] <model of pi>", with the results of testing in the description.  
  Please do not post results for models not in the "This still needs to be tested on".  
- **If you have negative test results (DDLC won't run, or something won't work), please instead post a regular issue.**  
+ **If you have negative test results (DDLC won't run, or something won't work), please instead post a regular issue.**
+* How do I mod the game / access game files?  
+  Modding the game / accessing game files works no differently to how it works with PC DDLC. By default the game files can be accessed at ~/ddlc/ddlc. (note that some mods may be too demanding for a rapsberry pi to run).  
 
 ## Planned features
 * Desktop/menu icons
